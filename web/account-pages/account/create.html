@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Create Account
+    </title>
+
+    <script type="text/javascript"
+      src="/vue-dev.js">
+    </script>
+
+    <link rel="stylesheet"
+      href="/styles.css" />
+
+    <script type="text/javascript"
+      src="/common.js" >
+    </script>
+
+    <script src="./create.js"
+      defer="defer" >
+    </script>
+  </head>
+
+  <body>
+    <div id="app-container" >
+      <header>
+        <!--<nav-bar></nav-bar>-->
+        <nav>
+          <a href="/frontpage.html">
+            Home
+          </a>
+
+          <a href="/about">
+            About
+          </a>
+        </nav>
+      </header>
+
+      <main>
+        <form id="create-form" >
+          <fieldset id="credentials-fields" >
+            <legend>
+              Credentials
+            </legend>
+
+            <div id="username-field"
+              v-bind:class="
+                ( formData.usernameErrors.length )
+                ? 'form-field form-field-with-error'
+                : 'form-field'
+              " >
+              <label for="formData.username" >
+                <span>
+                  Username:
+                </span>
+
+                <input id="username-control"
+                  type="text"
+                  name="username"
+                  v-model="formData.username" />
+              </label><!-- username -->
+
+              <!-- output for field? (to list errors in) -->
+              <ul id="username-errors-display"
+                v-if="formData.usernameErrors.length" >
+                <li v-for="error in formData.usernameErrors" >
+                  <p>
+                    {{ error }}
+                  </p>
+                </li>
+              </ul>
+            </div><!-- username-field -->
+
+            <div id="password-field"
+              v-bind:class="
+                ( formData.passwordErrors.length )
+                ? 'form-field form-field-with-error'
+                : 'form-field'
+              " >
+              <label for="password1" >
+                <span>
+                  Enter password:
+                </span>
+
+                <input id="password1-control"
+                  type="password"
+                  name="password1"
+                  v-model="formData.password1" />
+                  <!-- note that vue example uses v-model -->
+              </label><!-- password1 -->
+
+              <label for="password2" >
+                <span>
+                  Confirm password:
+                </span>
+
+                <input id="password2-control"
+                  type="password"
+                  name="password2"
+                  v-model="formData.password2" />
+                  <!-- note that vue example uses v-model -->
+              </label><!-- password2 -->
+
+              <!-- output for field? (to list errors in) -->
+              <ul id="password-errors-display"
+                v-if="formData.passwordErrors.length" >
+                <li v-for="error in formData.passwordErrors" >
+                  <p>
+                    {{ error }}
+                  </p>
+                </li>
+              </ul>
+            </div><!-- password-field -->
+          </fieldset><!-- credentials-fields -->
+
+          <fieldset id="account-details-fields" >
+            <legend>
+              Account Details
+            </legend>
+
+            <div id="display-name-field"
+              v-bind:class="
+                ( formData.displayNameErrors.length )
+                ? 'form-field form-field-with-error'
+                : 'form-field'
+              " >
+              <label for="display-name" >
+                <span>
+                  Display Name:
+                </span>
+
+                <input id="display-name-control"
+                  type="text"
+                  name="display-name"
+                  v-model="formData.displayName" />
+                  <!-- note that vue example uses v-model -->
+              </label>
+
+              <!-- output for field? (to list errors in) -->
+              <ul id="display-name-errors-display"
+                v-if="formData.displayNameErrors.length" >
+                <li v-for="error in formData.displayNameErrors" >
+                  <p>
+                    {{ error }}
+                  </p>
+                </li>
+              </ul>
+            </div><!-- display-name-field -->
+
+            <div id="bio-field"
+              v-bind:class="
+                ( formData.bioErrors.length )
+                ? 'form-field form-field-with-error'
+                : 'form-field'
+              " >
+
+              <label for="bio" >
+                <span>
+                  Enter a short bio:
+                </span>
+
+                <input id="bio-control"
+                  name="bio"
+                  type="text"
+                  maxlength="250"
+                  v-model="formData.bio" />
+              </label>
+
+
+              <!-- output for field? (to list errors in) -->
+              <ul id="bio-errors-display"
+                v-if="formData.bioErrors.length" >
+                <li v-for="error in formData.bioErrors" >
+                  <p>
+                    {{ error }}
+                  </p>
+                </li>
+              </ul>
+            </div><!-- bio-field -->
+          </fieldset><!-- account-details-fields -->
+
+          <div class="action-bar" >
+            <button id="create-account-button"
+            onclick="return onCreateAccountButtonPressed( event );">
+              create account
+            </button>
+
+            <a href="./login.html">
+              or go to login
+            </a>
+          </div><!-- card-action-bar -->
+
+        </form>
+      </main>
+
+      <modal v-if="modalData.isModalShown"
+        v-bind:is="modalData.currentModal" >
+      </modal>
+    </div><!-- app-container -->
+  </body>
+</html>

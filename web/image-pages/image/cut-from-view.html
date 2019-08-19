@@ -1,0 +1,35 @@
+
+            <div class="image-card-comment-section"
+              v-if="viewedImageData.comments.length === 0" >
+
+              <div class="comment-card"
+                v-for="comment in viewedImageData.comments" >
+                <div class="comment-card-profile" >
+                  <!--
+                  <img v-bind:src=""
+                    width="32px"
+                    height="32px" />
+                  -->
+
+                  <a v-bind:href="'accounts/' + comment.userId'">
+                    <h3>
+                      {{ comment.displayName }}
+                    </h3>
+                  </a>
+                </div><!-- comment-card-profile -->
+
+                <div class="comment-card-body" >
+                  <p>
+                    {{ comment.message }}
+                  </p>
+
+                  <div class="comment-card action-bar"
+                    v-if="viewedImageData.userId === account.userId" >
+                    <button onclick="deleteComment();">
+                      Delete
+                    </button>
+                  </div><!-- comment-card-action-bar -->
+
+                </div><!-- comment-card-body -->
+              </div><!-- comment-card -->
+            </div><!-- image-card-comment-section -->

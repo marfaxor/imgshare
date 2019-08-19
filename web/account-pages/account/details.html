@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Account Details
+    </title>
+
+    <script type="text/javascript"
+      src="/vue-dev.js">
+    </script>
+
+    <link rel="stylesheet"
+      href="/styles.css" />
+
+    <script type="text/javascript"
+      src="/common.js" >
+    </script>
+
+    <script type="text/javascript"
+      src="./details.js"
+      defer="defer" >
+    </script>
+
+  </head>
+
+  <body>
+    <div id="app-container">
+      <header>
+        <nav>
+          <a href="/frontpage.html">
+            Home
+          </a>
+
+          <a href="/upload" >
+            Upload
+          </a>
+
+          <a href="/about">
+            About
+          </a>
+        </nav>
+
+        <div class="account-widget" >
+          <a href="/account-pages/account/create.html"
+            v-if="accountData.accountId === 0" >
+            create account
+          </a>
+
+          <a href="/account-pages/account/login.html"
+            v-if="accountData.accountId === 0" >
+            login
+          </a>
+
+            <a href="/account"
+              v-if="accountData.accountId !== 0" >
+              Account
+            </a>
+
+            <a href="/logout"
+              v-if="accountData.accountId !== 0" >
+              Logout
+            </a>
+        </div><!-- account-widget -->
+      </header>
+
+      <main>
+        <div class="account-card" >
+        <h1>Account Details For <span id="accountheader">DisplayName</span>
+        </h1>
+        <h3 id="user-bio"></h3>
+
+        </div><!-- account-card -->
+        <div class="image-preview-container" >
+          <p v-if="imagePreviews.length === 0" >
+            You Haven't Uploaded Any Images Yet
+          </p>
+
+          <div class="image-previews"
+            v-if="imagePreviews.length !== 0" >
+            <div v-for="imagePreview in imagePreviews"
+              class="image-preview" >
+              <img v-bind:src="imagePreview.thumbUrl" />
+
+              <a v-bind:href="imagePreview.url">
+                {{ imagePreview.title }}
+              </a>
+            </div><!-- image-preview -->
+          </div><!-- image-previews -->
+        </div><!-- image-preview-container -->
+      </main>
+    </div> <!-- app-container -->
+  </body>
+</html>

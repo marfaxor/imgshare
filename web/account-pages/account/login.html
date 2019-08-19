@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Login
+    </title>
+
+    <script type="text/javascript"
+      src="/vue-dev.js">
+    </script>
+
+    <link rel="stylesheet"
+      href="/styles.css" />
+
+    <script type="text/javascript"
+      src="/common.js" >
+    </script>
+
+    <script type="text/javascript"
+      src="./login.js"
+      defer="defer" >
+    </script>
+  </head>
+
+  <body>
+    <div id="app-container" >
+      <header>
+        <!--<nav-bar></nav-bar>-->
+        <nav>
+          <a href="/frontpage.html">
+            Home
+          </a>
+
+          <a href="/about">
+            About
+          </a>
+        </nav>
+      </header>
+
+      <main>
+        <form id="login-form" >
+          <div id="username-field"
+            v-bind:class="
+              ( formData.usernameErrors.length )
+              ? 'form-field form-field-with-error'
+              : 'form-field'
+            " >
+            <label for="username" >
+              Username:
+              <input id="username-control"
+                type="text"
+                name="username"
+                v-model="formData.username"
+                required />
+            </label>
+
+            <ul id="username-errors-display"
+              v-if="formData.usernameErrors.length" >
+              <li v-for="error in formData.usernameErrors" >
+                <p>
+                  {{ error }}
+                </p>
+              </li>
+            </ul>
+          </div><!-- username-field -->
+
+          <div id="password-field"
+            v-bind:class="
+              ( formData.passwordErrors.length )
+              ? 'form-field form-field-with-error'
+              : 'form-field'
+            " >
+            <label for="password" >
+              Password:
+              <input id="password-control"
+                type="password"
+                name="password"
+                v-model="formData.password"
+                required />
+            </label>
+
+            <ul id="password-errors-display"
+              v-if="formData.passwordErrors.length" >
+              <li v-for="error in formData.passwordErrors" >
+                <p>
+                  {{ error }}
+                </p>
+              </li>
+            </ul>
+          </div><!-- password-field -->
+
+          <div class="action-bar" >
+          <button id="login-button"
+            onclick="return onLoginButtonPressed( event );" >
+            Login
+          </button>
+
+          <a href="./create.html" >
+            or create an account
+          </a>
+          </div><!-- card-action-bar -->
+        </form>
+      </main>
+
+      <modal v-if="modalData.isModalShown"
+        v-bind:is="modalData.currentModal" >
+      </modal>
+    </div><!-- app-container -->
+  </body>
+</html>

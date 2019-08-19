@@ -1,0 +1,526 @@
+
+/*/
+  structure styling
+//*/
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  background-color: #eec;
+
+  text-align: center;
+}
+body {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 100%;
+}
+
+button {
+  display: block;
+
+  flex-grow: 1;
+
+  width: fit-content;
+  min-width: 100px;
+  max-width: 160px;
+
+  margin: 4px;
+  border: thin solid black;
+  padding: 8px;
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  bottom: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: space-between;
+
+  margin: 0 8px 8px 8px;
+  border: thin solid black;
+  padding: 4px;
+
+  background-color: #887;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+
+  flex-grow: 1;
+
+  margin: 8px 8px 8px 8px;
+  border: thin solid black;
+  padding: 16px;
+
+  background-color: #887;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  flex-grow: 1;
+
+  min-width: 400px;
+
+  margin: 4px;
+  border: thin solid black;
+  padding: 2px;
+}
+nav a {
+  display: block;
+
+  flex-grow: 1;
+
+  width: fit-content;
+  min-width: 100px;
+  max-width: 160px;
+
+  margin: 4px;
+  border: thin solid black;
+  padding: 8px;
+
+  text-decoration: none;
+}
+
+.account-widget {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: stretch;
+
+  flex-grow: 1;
+  justify-self: flex-end;
+
+  width: fit-content;
+  min-width: 400px;
+  max-width: 600px;
+
+  margin: 2px;
+  border: thin solid black;
+  padding: 4px;
+}
+.account-widget a {
+  display: block;
+
+  width: fit-content;
+  min-width: 100px;
+
+  margin: 4px;
+  margin-left: 8px;
+  margin-right: 8px;
+  border: thin solid black;
+  padding: 8px;
+
+  text-decoration: none;
+  font-size: medium;
+}
+.account-widget button {
+  flex-grow: 0;
+
+  min-width: 40px;
+
+  margin: 4px;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  font-size: small;
+}
+
+.title-bar {
+  width: 90%;
+
+  margin: auto;
+  margin-bottom: 8px;
+  border: thin solid black;
+  padding: 16px;
+}
+.action-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  margin: 8px;
+  border: thin solid gray;
+  padding: 8px;
+}
+
+.image-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+
+  width: 90%;
+  min-width: 480px;
+  max-width: 800px;
+
+  margin: 16px;
+  border: thin solid black;
+  padding: 4px;
+}
+.image-card .title-bar {
+  min-width: 400px;
+
+  padding: 8px;
+}
+.image-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: stretch;
+  align-items: stretch;
+  align-content: center;
+
+  width: 90%;
+  min-width: 400px;
+  flex-grow: 1;
+
+  margin: auto;
+  margin-top: 8px;
+  border: thin solid black;
+  padding: 4px;
+}
+.image-card img {
+  display: block;
+  width: 90%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+
+  margin: auto;
+
+  background-color: black;
+}
+.image-card > img,
+.comment-card-body > img {
+  min-width: 300px;
+}
+.image-card .action-bar {
+  min-width: 400px;
+}
+.image-card-comment-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
+
+  flex-grow: 1;
+
+  min-width: 400px;
+
+  margin: 8px;
+  border: thin solid black;
+  padding: 2px;
+}
+
+.comment-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  min-width: 360px;
+
+  margin: 4px;
+  margin-bottom: 8px;
+  border: thin solid black;
+  padding: 4px;
+}
+.comment-card-profile {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 100px;
+
+  margin-right: 4px;
+  border: thin solid black;
+  padding: 8px;
+}
+.comment-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  flex-grow: 1;
+
+  min-width: 200px;
+
+  margin: 4px;
+  border: thin solid black;
+  padding: 8px;
+}
+.comment-card .action-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  min-width: 160px;
+
+  margin: 4px;
+  border: thin solid black;
+  padding: 8px;
+}
+
+button {
+  border: thin solid black;
+  padding: 8px;
+}
+
+
+/*/
+  color styling
+//*/
+* {
+  background-color: #eee;
+}
+
+body,
+#app-container {
+  background-color: #666;
+}
+
+header,
+main {
+  background-color: #998;
+}
+
+nav,
+.image-card-comment-section,
+.account-widget,
+.image-previews,
+.image-preview-container {
+  background-color: #ccc;
+}
+
+.image-card,
+.comment-card,
+.form-field {
+  background-color: #ddc
+}
+
+
+/* interaction styling */
+nav a,
+.account-widget a,
+button {
+  outline: thin solid black;
+  outline-offset: -2px;
+
+  background-color: #ee9;
+
+  font-weight: bold;
+
+  transition: all 160ms;
+}
+nav a:hover,
+.account-widget a:hover,
+button:hover {
+  outline-offset: -4px;
+
+  background-color: #ff9;
+}
+nav a:active,
+.account-widget a:active,
+button:active {
+  outline-offset: -6px;
+  outline-width: thick;
+
+  background-color: #ff6;
+}
+
+
+
+form {
+  width: 600px;
+
+  margin: auto;
+  border: thin solid black;
+  padding: 16px;
+}
+
+fieldset {
+  margin: auto;
+  margin-top: 16px;
+  border: thin solid black;
+}
+fieldset legend {
+  border: thin solid black;
+  padding: 8px;
+}
+
+
+form label {
+  display: inline-block;
+}
+form label span {
+  display: inline-block;
+}
+
+.form-field {
+  width: 80%;
+
+  margin: auto;
+  margin-bottom: 4px;
+  border: thin solid gray;
+  padding: 16px;
+}
+
+.form-field-with-error {
+  border: red;
+
+  background-color: rgb(255, 125, 125);
+}
+
+
+/*   from vuejs modal example   */
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 300px;
+
+  margin: 0px auto;
+  border: thin solid black;
+  padding: 20px 30px;
+
+  background-color: #fff;
+
+  transition: all .3s ease;
+}
+
+.modal-header h3 {
+  margin-top: 0;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal-default-button {
+  float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+
+
+.account-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  width: 80%;
+  margin: auto;
+  border: thin solid black;
+  padding: 16px;
+}
+
+.image-preview-container {
+  width: 90%;
+
+  margin: auto;
+  border: thin solid black;
+  padding: 16px;
+}
+.image-previews {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: stretch;
+
+  width: 100%;
+
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.image-preview {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  width: 200px;
+  margin: 8px;
+  border: thin solid black;
+  padding: 8px;
+}
+.image-preview img {
+  display: block;
+
+  width: 180px;
+  height: auto;
+
+  margin: auto;
+  margin-bottom: 4px;
+  padding: 8px;
+
+  background-color: black;
+}

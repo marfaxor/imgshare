@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Upload Image
+    </title>
+
+    <script type="text/javascript"
+      src="https://widget.cloudinary.com/v2.0/global/all.js" >
+    </script>
+
+    <script type="text/javascript"
+      src="/vue-dev.js">
+    </script>
+
+    <link rel="stylesheet"
+      href="/styles.css" />
+
+    <script type="text/javascript"
+      src="/common.js" >
+    </script>
+
+    <script type="text/javascript"
+      src="./upload.js"
+      defer="defer" >
+    </script>
+
+  </head>
+
+  <body>
+    <div id="app-container" >
+      <header>
+        <nav>
+          <a href="/frontpage.html">
+            Home
+          </a>
+
+          <a href="/upload" >
+            Upload
+          </a>
+
+          <a href="/about">
+            About
+          </a>
+        </nav>
+
+        <div class="account-widget" >
+          <a href="/account-pages/account/create.html"
+            v-if="accountData.accountId === 0" >
+            create account
+          </a>
+
+          <a href="/account-pages/account/login.html"
+            v-if="accountData.accountId === 0" >
+            login
+          </a>
+
+            <a href="/account"
+              v-if="accountData.accountId !== 0" >
+              Account
+            </a>
+
+            <a href="/logout"
+              v-if="accountData.accountId !== 0" >
+              Logout
+            </a>
+        </div><!-- account-widget -->
+      </header>
+
+      <main>
+        <div id="upload-widget-container" >
+          <a id="upload_widget_opener"
+            href="#upload-widget-container" >
+            Upload Image
+          </a>
+        </div><!-- upload-widget-container -->
+
+        <form id="image-details-form"
+          v-if="imageDetailsFormData.isShown" >
+          <h2>
+            Enter some details about the image
+          </h2>
+
+          <div id="image-title-field"
+            v-bind:class="
+              ( imageDetailsFormData.imageTitleErrors.length )
+              ? 'form-field form-field-with-error'
+              : 'form-field'
+            " >
+            <label for="image-title" >
+              <span>
+                Image title:
+              </span>
+
+              <input id="image-title-control"
+                type="text"
+                name="image-title"
+                v-model="imageDetailsFormData.imageTitle"
+                required />
+            </label><!-- image-title -->
+
+            <ul id="image-title-errors-display"
+              v-if="imageDetailsFormData.imageTitleErrors.length" >
+              <li v-for="error in imageDetailsFormData.imageTitleErrors" >
+                <p>
+                  {{ error }}
+                </p>
+              </li>
+            </ul>
+          </div><!-- image-title-field -->
+
+          <div id="image-description-field"
+            v-bind:class="
+              ( imageDetailsFormData.imageDescriptionErrors.length )
+              ? 'form-field form-field-with-error'
+              : 'form-field'
+            " >
+            <label for="image-description" >
+              <span>
+                Image description:
+              </span>
+
+              <input id="image-description-control"
+                type="text"
+                name="image-description"
+                v-model="imageDetailsFormData.imageDescription"
+                required />
+            </label><!-- image-description -->
+
+            <ul id="image-description-errors-display"
+              v-if="imageDetailsFormData.imageDescriptionErrors.length" >
+              <li v-for="error in imageDetailsFormData.imageDescriptionErrors" >
+                <p>
+                  {{ error }}
+                </p>
+              </li>
+            </ul>
+          </div><!-- image-description-field -->
+
+          <div id="image-tag1-field"
+            v-bind:class="
+              ( imageDetailsFormData.imageTag1Errors.length )
+              ? 'form-field form-field-with-error'
+              : 'form-field'
+            " >
+            <label for="image-tag1" >
+              <span>
+                Image tag 1:
+              </span>
+
+              <input id="image-tag1-control"
+                type="text"
+                name="image-tag1"
+                v-model="imageDetailsFormData.imageTag1" />
+            </label><!-- image-tag1 -->
+
+            <ul id="image-tag1-errors-display"
+              v-if="imageDetailsFormData.imageTag1Errors.length" >
+              <li v-for="error in imageDetailsFormData.imageTag1Errors" >
+                <p>
+                  {{ error }}
+                </p>
+              </li>
+            </ul>
+          </div><!-- image-tag1-field -->
+
+          <div id="image-tag2-field"
+            v-bind:class="
+              ( imageDetailsFormData.imageTag2Errors.length )
+              ? 'form-field form-field-with-error'
+              : 'form-field'
+            " >
+            <label for="image-tag2" >
+              <span>
+                Image tag 2:
+              </span>
+
+              <input id="image-tag2-control"
+                type="text"
+                name="image-tag2"
+                v-model="imageDetailsFormData.imageTag2" />
+            </label><!-- image-tag2 -->
+
+            <ul id="image-tag2-errors-display"
+              v-if="imageDetailsFormData.imageTag2Errors.length" >
+              <li v-for="error in imageDetailsFormData.imageTag2Errors" >
+                <p>
+                  {{ error }}
+                </p>
+              </li>
+            </ul>
+          </div><!-- image-tag2-field -->
+
+          <div id="image-tag3-field"
+            v-bind:class="
+              ( imageDetailsFormData.imageTag3Errors.length )
+              ? 'form-field form-field-with-error'
+              : 'form-field'
+            " >
+            <label for="image-tag3" >
+              <span>
+                Image tag 3:
+              </span>
+
+              <input id="image-tag3-control"
+                type="text"
+                name="image-tag3"
+                v-model="imageDetailsFormData.imageTag3" />
+            </label><!-- image-tag -->
+
+            <ul id="image-tag3-errors-display"
+              v-if="imageDetailsFormData.imageTag3Errors.length" >
+              <li v-for="error in imageDetailsFormData.imageTag3Errors" >
+                <p>
+                  {{ error }}
+                </p>
+              </li>
+            </ul>
+          </div><!-- image-tag-field -->
+
+          <div class="action-bar">
+            <button id="confirm-image-details-button"
+              onclick="return onConfirmImageDetailsButtonPressed( event );" >
+              confirm details
+            </button>
+
+            <button id="cancel-image-details-button"
+              onclick="return onCancelImageDetailsButtonPressed( event );" >
+              cancel upload
+            </button>
+          </div><!-- action-bar -->
+        </form><!-- image-details-form -->
+      </main>
+
+      <modal v-if="modalData.isModalShown"
+        v-bind:is="modalData.currentModal" >
+      </modal>
+
+    </div> <!-- app-container -->
+  </body>
+</html>

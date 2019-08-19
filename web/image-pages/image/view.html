@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      View Image
+    </title>
+
+    <script type="text/javascript"
+      src="/vue-dev.js">
+    </script>
+
+    <link rel="stylesheet"
+      href="/styles.css" />
+
+    <script type="text/javascript"
+      src="/common.js" >
+    </script>
+
+    <script src="./view.js"
+      defer="defer" >
+    </script>
+  </head>
+
+  <body>
+    <div id="app-container" >
+      <header>
+        <nav>
+          <a href="/frontpage.html">
+            Home
+          </a>
+
+          <a href="/upload" >
+            Upload
+          </a>
+
+          <a href="/about">
+            About
+          </a>
+        </nav>
+
+        <div class="account-widget" >
+          <a href="/account-pages/account/create.html"
+            v-if="pageData.accountData.accountId === 0" >
+            create account
+          </a>
+
+          <a href="/account-pages/account/login.html"
+            v-if="pageData.accountData.accountId === 0" >
+            login
+          </a>
+
+            <a href="/account"
+              v-if="pageData.accountData.accountId !== 0" >
+              Account
+            </a>
+
+            <a href="/logout"
+              v-if="pageData.accountData.accountId !== 0" >
+              Logout
+            </a>
+        </div><!-- account-widget -->
+      </header>
+
+      <main>
+        <div class="image-card" >
+          <div class="title-bar" >
+            <h2>
+              {{ pageData.viewedImageData.imageTitle }}
+            </h2>
+          </div><!-- image-card-title-bar -->
+
+          <img v-bind:src="pageData.viewedImageData.url" />
+
+          <div class="image-card-body" >
+            <p>
+              {{ pageData.viewedImageData.imageDescription }}
+            </p>
+
+            <p>
+              Popularity:
+              {{ ( pageData.viewedImageData.upvotes + pageData.viewedImageData.downvotes ) }}
+            </p>
+
+            <div class="action-bar" >
+              <button onclick="upvoteImage( event );">
+                +
+                {{ pageData.viewedImageData.upvotes }}
+              </button>
+
+              <button onclick="downvoteImage( event );">
+                -
+                {{ pageData.viewedImageData.downvotes }}
+              </button>
+
+              <button onclick="favoriteImage( event );">
+                Favorite
+              </button>
+            </div><!-- image-card-action-bar -->
+
+          </div><!-- image-card-body -->
+        </div><!-- image-card -->
+
+      </main>
+    </div><!-- app-container -->
+  </body>
+</html>

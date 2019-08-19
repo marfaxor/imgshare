@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Create Account
+    </title>
+
+    <script type="text/javascript"
+      src="/vue-dev.js">
+    </script>
+
+    <link rel="stylesheet"
+      href="/styles.css" />
+
+    <script type="text/javascript"
+      src="/common.js" >
+    </script>
+
+    <script src="./frontpage.js"
+      defer="defer" >
+    </script>
+  </head>
+
+  <body>
+    <div id="app-container" >
+      <header>
+        <nav>
+          <a href="/frontpage.html">
+            Home
+          </a>
+
+          <a href="/upload" >
+            Upload
+          </a>
+
+          <a href="/about">
+            About
+          </a>
+        </nav>
+
+        <div class="account-widget" >
+          <a href="/account-pages/account/create.html"
+            v-if="accountData.accountId === 0" >
+            create account
+          </a>
+
+          <a href="/account-pages/account/login.html"
+            v-if="accountData.accountId === 0" >
+            login
+          </a>
+
+            <a href="/account"
+              v-if="accountData.accountId !== 0" >
+              Account
+            </a>
+
+            <a href="/logout"
+              v-if="accountData.accountId !== 0" >
+              Logout
+            </a>
+        </div><!-- account-widget -->
+      </header>
+
+      <main>
+        <h1 class="title-bar"> Most Popular </h1>
+
+        <div class="image-preview-container" >
+          <p v-if="imagePreviews.length === 0" >
+            loading images...
+          </p>
+
+          <div class="image-previews"
+            v-if="imagePreviews.length !== 0" >
+            <div class="image-preview"
+              v-for="imagePreview in imagePreviews" >
+              <img v-bind:src="imagePreview.thumbUrl" />
+
+              <a v-bind:href="'/image-view/' + imagePreview.id">
+                {{ imagePreview.title }}
+              </a>
+              <!-- matt is adding this ------------------------------------------>
+              <a v-bind:href="'/account-details/' + imagePreview.username">
+                Uploaded By {{ imagePreview.username }}
+              </a>
+              <a v-bind:href="imagePreview.upvotes">
+                {{ imagePreview.upvotes }} Upvotes
+              </a>
+            </div><!-- image-preview -->
+          </div><!-- image-previews -->
+        </div><!-- image-preview-container -->
+      </main>
+    </div> <!-- app-container -->
+  </body>
+</html>
